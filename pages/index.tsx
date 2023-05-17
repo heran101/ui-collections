@@ -4,8 +4,73 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Accordion from "@/Components/Basic/Accordion/Accordion";
 import FAQ from "@/Components/common/FAQ/FAQ";
+import { CustomCarousel } from "@/Components/common/CustomCarousel/CustomCarousel";
+import styled from "styled-components";
+const H1 = styled.h1`
+  text-align: center;
+  margin: 0;
+  padding-bottom: 10rem;
+`;
+const Flex = styled.div`
+  display: flex;
+`;
+interface ItemInterface {
+  size: any;
+}
+const Item = styled.div<ItemInterface>`
+  color: white;
+  font-size: 2rem;
+  text-transform: capitalize;
 
+  width: ${({ size }) => `${size}rem`};
+  height: ${({ size }) => `${size}rem`};
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+const HorizontalCenter = styled(Flex)`
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 25rem;
+`;
+const Container = styled.div`
+  height: stretch;
+  width: 100%;
+
+  background: #ecf0f1;
+`;
 const inter = Inter({ subsets: ["latin"] });
+const colors = [
+  "#f1c40f",
+  "#f39c12",
+  "#e74c3c",
+  "#16a085",
+  "#2980b9",
+  "#8e44ad",
+  "#2c3e50",
+  "#95a5a6",
+];
+
+const numbersArray = Array.from(Array(10).keys()).map((number) => (
+  <Item size={5} style={{ color: "black" }} key={number}>
+    {number}
+  </Item>
+));
+
+const colorsArray = colors.map((color) => (
+  <Item
+    size={20}
+    style={{ background: color, borderRadius: "20px", opacity: 0.9 }}
+    key={color}
+  >
+    {color}
+  </Item>
+));
 
 export default function Home() {
   return (
@@ -16,8 +81,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main
+        style={{ width: "100%", height: "100vh", padding: " 0", margin: "0" }}
+      >
         <FAQ />
+        <Container>
+          <H1>Easy Carousel</H1>
+          <HorizontalCenter>
+            <CustomCarousel>{colorsArray}</CustomCarousel>
+          </HorizontalCenter>
+
+          <HorizontalCenter>
+            <CustomCarousel>{numbersArray}</CustomCarousel>
+          </HorizontalCenter>
+        </Container>
       </main>
     </>
   );
