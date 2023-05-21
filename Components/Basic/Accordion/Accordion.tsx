@@ -96,7 +96,7 @@ const Accordion = ({
 
   return (
     <>
-      <div>
+   
         <AccordionItem>
           <AccordionButton
             isActive={isActive}
@@ -111,7 +111,7 @@ const Accordion = ({
             </AccordionContent>
           )}
         </AccordionItem>
-      </div>
+
     </>
   );
 };
