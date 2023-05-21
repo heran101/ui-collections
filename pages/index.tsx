@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Accordion from "@/Components/Basic/Accordion/Accordion";
 import FAQ from "@/Components/common/FAQ/FAQ";
+import FeatureStack from "@/Components/common/FeatureStack/FeatureStack";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <FAQ />
+        <FeatureStack />
       </main>
     </>
   );
