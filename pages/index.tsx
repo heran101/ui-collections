@@ -98,6 +98,7 @@ export default function Home() {
           </HorizontalCenter>
         </Container>
         <FeatureStack />
+        <FAQ />
       </main>
     </>
   );
