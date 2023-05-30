@@ -7,6 +7,8 @@ import FAQ from "@/Components/common/FAQ/FAQ";
 import FeatureStack from "@/Components/common/FeatureStack/FeatureStack";
 import { CustomCarousel } from "@/Components/common/CustomCarousel/CustomCarousel";
 import styled from "styled-components";
+import CMSwitch from "@/Components/Basic/Switch/Switch";
+
 const H1 = styled.h1`
   text-align: center;
   margin: 0;
@@ -86,6 +88,7 @@ export default function Home() {
       <main
         style={{ width: "100%", height: "100vh", padding: " 0", margin: "0" }}
       >
+        <CMSwitch />
         <FAQ />
         <Container>
           <H1>Easy Carousel</H1>
@@ -98,6 +101,8 @@ export default function Home() {
           </HorizontalCenter>
         </Container>
         <FeatureStack />
+        <FAQ />
+        <FAQ />
         <FAQ />
       </main>
     </>
