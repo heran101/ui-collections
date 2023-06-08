@@ -8,6 +8,7 @@ import FeatureStack from "@/Components/common/FeatureStack/FeatureStack";
 import { CustomCarousel } from "@/Components/common/CustomCarousel/CustomCarousel";
 import styled from "styled-components";
 import CMSwitch from "@/Components/Basic/Switch/Switch";
+import Tabs from "@/Components/Basic/Tabs/Tabs";
 
 const H1 = styled.h1`
   text-align: center;
@@ -102,6 +103,7 @@ export default function Home() {
         </Container>
         <FeatureStack />
         <FAQ />
+        <Tabs />
         <FAQ />
         <FAQ />
       </main>
