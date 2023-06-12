@@ -9,6 +9,8 @@ import { CustomCarousel } from "@/Components/common/CustomCarousel/CustomCarouse
 import styled from "styled-components";
 import CMSwitch from "@/Components/Basic/Switch/Switch";
 import Carousel from "@/Components/Basic/MultiItemCarousel";
+import Tabs from "@/Components/Basic/Tabs/Tabs";
+import ImageWithQuote from "@/Components/Basic/ImageWithQuote/ImageWithQuote";
 
 const H1 = styled.h1`
   text-align: center;
@@ -126,6 +128,8 @@ export default function Home() {
         <FeatureStack />
         <Carousel slides={slides} />
         <FAQ />
+        <Tabs />
+        <ImageWithQuote />
         <FAQ />
         <FAQ />
       </main>
