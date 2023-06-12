@@ -8,6 +8,7 @@ import FeatureStack from "@/Components/common/FeatureStack/FeatureStack";
 import { CustomCarousel } from "@/Components/common/CustomCarousel/CustomCarousel";
 import styled from "styled-components";
 import CMSwitch from "@/Components/Basic/Switch/Switch";
+import Carousel from "@/Components/Basic/MultiItemCarousel";
 
 const H1 = styled.h1`
   text-align: center;
@@ -74,6 +75,28 @@ const colorsArray = colors.map((color) => (
     {color}
   </Item>
 ));
+const slides = [
+  {
+    id: 1,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=1",
+    caption: "Slide 1",
+  },
+  {
+    id: 2,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=2",
+    caption: "Slide 2",
+  },
+  {
+    id: 3,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=3",
+    caption: "Slide 3",
+  },
+  {
+    id: 4,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=4",
+    caption: "Slide 4",
+  },
+];
 
 export default function Home() {
   return (
@@ -101,6 +124,7 @@ export default function Home() {
           </HorizontalCenter>
         </Container>
         <FeatureStack />
+        <Carousel slides={slides} />
         <FAQ />
         <FAQ />
         <FAQ />
