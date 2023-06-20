@@ -105,6 +105,21 @@ const slides = [
     image: "https://via.placeholder.com/900x300/c69/f9c/?text=4",
     caption: "Slide 4",
   },
+  {
+    id: 5,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=5",
+    caption: "Slide 5",
+  },
+  {
+    id: 6,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=6",
+    caption: "Slide 6",
+  },
+  {
+    id: 7,
+    image: "https://via.placeholder.com/900x300/c69/f9c/?text=7",
+    caption: "Slide 7",
+  },
 ];
 const slidesd = [<div>1</div>, <div>3</div>, <div>1</div>];
 interface SlideData {
@@ -134,7 +149,7 @@ export default function Home() {
       >
         <CMSwitch />
         <FAQ />
-        <Container>
+        {/* <Container>
           <H1>Easy Carousel</H1>
           <HorizontalCenter>
             <CustomCarousel>{colorsArray}</CustomCarousel>
@@ -143,16 +158,16 @@ export default function Home() {
           <HorizontalCenter>
             <CustomCarousel>{numbersArray}</CustomCarousel>
           </HorizontalCenter>
-        </Container>
-        <FeatureStack />
-        <TryNumberFour />
+        </Container> */}
+        {/* <FeatureStack /> */}
+        {/* <TryNumberFour /> */}
         <Carousel slides={slides} />
         <FAQ />
         {/* <CarouselContinue />
         <CarouselContinue2 slides={slides} /> */}
-        <TryNumberOne slides={slides} />
+        {/* <TryNumberOne slides={slides} />
         <Tabs />
-        <ImageWithQuote />
+        <ImageWithQuote /> */}
         Two
         {/* <TryNumberTwo slides={slides} />
         <TryNumberThree /> */}
