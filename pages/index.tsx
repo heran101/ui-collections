@@ -11,6 +11,13 @@ import CMSwitch from "@/Components/Basic/Switch/Switch";
 import Carousel from "@/Components/Basic/MultiItemCarousel";
 import Tabs from "@/Components/Basic/Tabs/Tabs";
 import ImageWithQuote from "@/Components/Basic/ImageWithQuote/ImageWithQuote";
+import CarouselContinue from "@/Components/Basic/CarouselContinue";
+import CarouselContinue2 from "@/Components/Basic/CarouselContinue2";
+import CarouDD from "@/Components/Basic/CarouDD";
+import TryNumberOne from "@/Components/Basic/TryNumberOne";
+import TryNumberTwo from "@/Components/Basic/TryNumberTwo";
+import TryNumberThree from "@/Components/Basic/TryNumberThree";
+import TryNumberFour from "@/Components/Basic/TryNumberFour";
 
 const H1 = styled.h1`
   text-align: center;
@@ -99,7 +106,19 @@ const slides = [
     caption: "Slide 4",
   },
 ];
-
+const slidesd = [<div>1</div>, <div>3</div>, <div>1</div>];
+interface SlideData {
+  order: number;
+  text: string;
+}
+const sslides: SlideData[] = [
+  { order: -1, text: "6" },
+  { order: 0, text: "1" },
+  { order: 1, text: "2" },
+  { order: 2, text: "3" },
+  { order: 3, text: "4" },
+  { order: 4, text: "5" },
+];
 export default function Home() {
   return (
     <>
@@ -126,10 +145,17 @@ export default function Home() {
           </HorizontalCenter>
         </Container>
         <FeatureStack />
+        <TryNumberFour />
         <Carousel slides={slides} />
         <FAQ />
+        {/* <CarouselContinue />
+        <CarouselContinue2 slides={slides} /> */}
+        <TryNumberOne slides={slides} />
         <Tabs />
         <ImageWithQuote />
+        Two
+        {/* <TryNumberTwo slides={slides} />
+        <TryNumberThree /> */}
         <FAQ />
         <FAQ />
       </main>

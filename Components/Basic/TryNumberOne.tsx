@@ -10,7 +10,6 @@ const CarouselContainer = styled.ul`
   list-style-type: none;
   display: flex;
   background: red;
-  /* overflow: hidden; */
 `;
 
 const CarouselSlide = styled.li<{
@@ -18,7 +17,7 @@ const CarouselSlide = styled.li<{
   active: boolean;
   direction: string;
   currentSlide: number;
-  maxSlid: number;
+  maxSlide: number;
 }>`
   position: absolute;
   top: 0;
@@ -29,7 +28,7 @@ const CarouselSlide = styled.li<{
   transition: transform 0.5s ease-in-out;
 
   transform: ${({ index, active, direction, currentSlide }) =>
-    currentSlide == 0
+    currentSlide === 0
       ? `translateX(${100 * index}%)`
       : direction === "previous"
       ? `translateX(${100 * (index - currentSlide)}%)`
@@ -61,6 +60,24 @@ const CarouselButton = styled.button`
   cursor: pointer;
 `;
 
+const CarouselIndicators = styled.ul`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  list-style-type: none;
+`;
+
+const CarouselIndicator = styled.li<{ active: boolean }>`
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: ${({ active }) => (active ? "white" : "gray")};
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
 interface CarouselProps {
   slides: {
     id: number;
@@ -69,12 +86,33 @@ interface CarouselProps {
   }[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({ slides }) => {
+const TryNumberOne: React.FC<CarouselProps> = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [allSlide, setAllSlide] = useState(slides);
   const trackRef = useRef<HTMLUListElement>(null);
-  const prevSlide = () => {
-    console.log("preb");
 
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       nextSlide();
+  //     }, 3000);
+
+  //     return () => {
+  //       clearInterval(interval);
+  //     };
+  //   }, []);
+  useEffect(() => {
+    const first = allSlide[0];
+    const second = allSlide[1];
+    const last = allSlide[allSlide.length - 1];
+    const secondlast = allSlide[allSlide.length - 2];
+
+    // Cloning first and last items
+    allSlide?.unshift(secondlast, first);
+    allSlide?.unshift(last, first);
+    allSlide?.push(second);
+    allSlide?.push(first);
+  }, [allSlide]);
+  const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? slides.length - 1 : prevSlide - 1
     );
@@ -86,21 +124,19 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
     );
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
-    <CarouselContainer
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Tips & Techn"
-      ref={trackRef}
-    >
+    <CarouselContainer ref={trackRef}>
       {slides.map((slide, index) => (
         <CarouselSlide
-          className="slidedd"
           key={slide.id}
           index={index}
           active={index === currentSlide}
           currentSlide={currentSlide}
-          maxSlid={slides.length - 1}
+          maxSlide={slides.length - 1}
           direction={
             index === currentSlide - 1
               ? "previous"
@@ -108,31 +144,26 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
               ? "next"
               : ""
           }
-          aria-label={
-            index === currentSlide - 1
-              ? "Previous slide"
-              : index === currentSlide + 1
-              ? "Next slide"
-              : "Current Slide"
-          }
-          onClick={() => {
-            index === currentSlide - 1
-              ? prevSlide()
-              : index === currentSlide + 1
-              ? nextSlide()
-              : console.log("me");
-          }}
         >
           <CarouselImage src={slide.image} alt={slide.caption} />
           <CarouselCaption>{slide.caption}</CarouselCaption>
         </CarouselSlide>
       ))}
-      {/* <CarouselButton onClick={prevSlide}>Previous</CarouselButton>
+      <CarouselButton onClick={prevSlide}>Previous</CarouselButton>
       <CarouselButton onClick={nextSlide} style={{ right: 0 }}>
         Next
-      </CarouselButton> */}
+      </CarouselButton>
+      <CarouselIndicators>
+        {slides.map((slide, index) => (
+          <CarouselIndicator
+            key={slide.id}
+            active={index === currentSlide}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </CarouselIndicators>
     </CarouselContainer>
   );
 };
 
-export default Carousel;
+export default TryNumberOne;
