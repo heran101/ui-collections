@@ -18,6 +18,7 @@ import TryNumberOne from "@/Components/Basic/TryNumberOne";
 import TryNumberTwo from "@/Components/Basic/TryNumberTwo";
 import TryNumberThree from "@/Components/Basic/TryNumberThree";
 import TryNumberFour from "@/Components/Basic/TryNumberFour";
+import MasonryLayout from "@/Components/Basic/MasonryLayout";
 
 const H1 = styled.h1`
   text-align: center;
@@ -154,6 +155,7 @@ export default function Home() {
         <Tabs />
         <ImageWithQuote />
         Two
+        <MasonryLayout />
         {/* <TryNumberTwo slides={slides} />
         <TryNumberThree /> */}
         <FAQ />
