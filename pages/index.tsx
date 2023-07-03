@@ -18,6 +18,7 @@ import TryNumberOne from "@/Components/Basic/TryNumberOne";
 import TryNumberTwo from "@/Components/Basic/TryNumberTwo";
 import TryNumberThree from "@/Components/Basic/TryNumberThree";
 import TryNumberFour from "@/Components/Basic/TryNumberFour";
+import CarouselPoint from "@/Components/Basic/CarouselPoint";
 
 const H1 = styled.h1`
   text-align: center;
@@ -161,8 +162,9 @@ export default function Home() {
         </Container> */}
         {/* <FeatureStack /> */}
         {/* <TryNumberFour /> */}
-        <Carousel slides={slides} />
+        {/* <Carousel slides={slides} /> */}
         <FAQ />
+        <CarouselPoint />
         {/* <CarouselContinue />
         <CarouselContinue2 slides={slides} /> */}
         {/* <TryNumberOne slides={slides} />
