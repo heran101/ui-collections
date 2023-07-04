@@ -5,7 +5,7 @@ const CarouselCardWrapper = styled.div`
   scroll-snap-align: center;
   margin: 5px 10px;
   border: 1px solid #bbb;
-  width: 250px;
+  width: 700px;
   box-shadow: 3px 2px 5px 0px lightgrey;
   background-color: white;
   font-family: "Helvetica";
@@ -14,7 +14,7 @@ const CarouselCardWrapper = styled.div`
   transition: "all 4s";
 `;
 const CarouselCardImageContainer = styled.div`
-  height: 150px;
+  height: 450px;
   text-align: center;
   line-height: 150px;
   border-bottom: 1px solid #bbb;
@@ -49,6 +49,7 @@ const CarouselContainerWrapper = styled.div`
 
 const ScrollingWrapper = styled.div`
   overflow-x: scroll;
+
   /* scroll-snap-type: x mandatory; */
   overflow-y: hidden;
   white-space: nowrap;
@@ -59,15 +60,23 @@ const ScrollingWrapper = styled.div`
   }
 `;
 const ContentWrapper = styled.div`
-  max-width: 700px;
-  width: 60%;
-  height: 100vh;
+  max-width: 100%;
+  /* width: 60%; */
+  height: 550px;
   margin: 0 auto;
   position: relative;
   top: 0;
   padding: 0 10px;
   padding-top: 20px;
   background-color: white;
+`;
+const ContentWindowWrapper = styled.div`
+  overflow-x: hidden;
+  max-width: 950px;
+  /* width: 60%; */
+  height: 550px;
+  margin: auto;
+  border: 2px red solid;
 `;
 type CarouselCardProps = {
   title: string;
@@ -112,6 +121,11 @@ const CarouselPoint = () => {
     setScrollWidth(scrollWidthTemp);
     setClonesWidth(clonesWidthTemp);
   };
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+    scrollContainer.scrollLeft = scrollContainer.scrollLeft + 300;
+  }, []);
 
   useEffect(() => {
     const allWithClass = Array.from(
@@ -192,7 +206,7 @@ const CarouselPoint = () => {
     //   prevSlide === slides.length - 1 ? 0 : prevSlide + 1
     // );
     const container = e.currentTarget.previousSibling;
-    sideScroll(container, "right", 10, 272, 10);
+    sideScroll(container, "right", 10, 690, 10);
     setInitialRun(false);
   };
 
@@ -201,63 +215,65 @@ const CarouselPoint = () => {
     //   prevSlide === 0 ? slides.length - 1 : prevSlide - 1
     // );
     const container = e.currentTarget.nextSibling;
-    sideScroll(container, "left", 10, 272, 10);
+    sideScroll(container, "left", 10, 690, 10);
     setInitialRun(false);
   };
   return (
     <>
       CarouselPoint
-      <ContentWrapper>
-        <CarouselContainerWrapper>
-          <CarouselButton buttonType={"Prev"} onClick={scrollPrev}>
-            Previous
-          </CarouselButton>
+      <ContentWindowWrapper>
+        <ContentWrapper>
+          <CarouselContainerWrapper>
+            <CarouselButton buttonType={"Prev"} onClick={scrollPrev}>
+              Previous
+            </CarouselButton>
 
-          <ScrollingWrapper
-            // style={{
-            //   paddingLeft: initialRun ? "150px" : 0,
-            //   transition: "all 4s",
-            // }}
-            ref={scrollContainerRef}
-            onScroll={(e) => handleScroll(e)}
-          >
-            {/* {initialRun && (
+            <ScrollingWrapper
+              // style={{
+              //   paddingLeft: initialRun ? "150px" : 0,
+              //   transition: "all 4s",
+              // }}
+              ref={scrollContainerRef}
+              onScroll={(e) => handleScroll(e)}
+            >
+              {/* {initialRun && (
               <CarouselCard
                 style={{ visibility: "hidden" }}
                 title={"Card Number 1"}
                 className={""}
               />
             )} */}
-            <CarouselCard title={"Card Number 6"} className={"is-clone"} />
-            <CarouselCard title={"Card Number 1"} className={""} />
-            <CarouselCard title={"Card Number 2"} />
-            <CarouselCard title={"Card Number 3"} />
-            <CarouselCard title={"Card Number 4"} />
-            <CarouselCard title={"Card Number 5"} />
-            <CarouselCard title={"Card Number 6"} />
-            <CarouselCard
-              title={"Card Number 1"}
-              className={"is-clone is-start"}
-            />
-            <CarouselCard title={"Card Number 2"} className={"is-clone"} />
-            <CarouselCard title={"Card Number 3"} className={"is-clone"} />
-            <CarouselCard title={"Card Number 4"} className={"is-clone"} />
-            <CarouselCard title={"Card Number 5"} className={"is-clone"} />
-            <CarouselCard title={"Card Number 6"} className={"is-clone"} />
-          </ScrollingWrapper>
+              <CarouselCard title={"Card Number 6"} className={"is-clone"} />
+              <CarouselCard title={"Card Number 1"} className={""} />
+              <CarouselCard title={"Card Number 2"} />
+              <CarouselCard title={"Card Number 3"} />
+              <CarouselCard title={"Card Number 4"} />
+              <CarouselCard title={"Card Number 5"} />
+              <CarouselCard title={"Card Number 6"} />
+              <CarouselCard
+                title={"Card Number 1"}
+                className={"is-clone is-start"}
+              />
+              <CarouselCard title={"Card Number 2"} className={"is-clone"} />
+              <CarouselCard title={"Card Number 3"} className={"is-clone"} />
+              <CarouselCard title={"Card Number 4"} className={"is-clone"} />
+              <CarouselCard title={"Card Number 5"} className={"is-clone"} />
+              <CarouselCard title={"Card Number 6"} className={"is-clone"} />
+            </ScrollingWrapper>
 
-          <CarouselButton buttonType={"next"} onClick={scrollNext}>
-            Next
-          </CarouselButton>
-        </CarouselContainerWrapper>
-        <div>
-          {" "}
-          debugging values
-          <div>ScrollPos:&nbsp;{scrollPos}</div>
-          <div>ClonesWidth:&nbsp;{getClonesWidth()}</div>
-          <div>ScrollWidth:&nbsp;{scrollWidth}</div>
-        </div>
-      </ContentWrapper>
+            <CarouselButton buttonType={"next"} onClick={scrollNext}>
+              Next
+            </CarouselButton>
+          </CarouselContainerWrapper>
+          <div>
+            {" "}
+            debugging values
+            <div>ScrollPos:&nbsp;{scrollPos}</div>
+            <div>ClonesWidth:&nbsp;{getClonesWidth()}</div>
+            <div>ScrollWidth:&nbsp;{scrollWidth}</div>
+          </div>
+        </ContentWrapper>
+      </ContentWindowWrapper>
     </>
   );
 };
